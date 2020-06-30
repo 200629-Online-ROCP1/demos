@@ -37,9 +37,10 @@ public class Hello {
 
 }
 
-//public class ANewClass{
-//	
-//	void test2() {
-//		//Hello.test();
-//	}
-//}
+//This is a second class declared in the file. It can not be public.
+class ANewClass{
+	
+	void test2() {
+		//Hello.test();
+	}
+}
