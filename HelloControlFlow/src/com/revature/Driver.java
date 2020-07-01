@@ -15,32 +15,33 @@ public class Driver {
 		
 		boolean con = true; 
 		
+		mywhileloop:
 		while(myCar.hasTurbo && showSC()) {
 			System.out.println("I can go fast!!!!!");
 			if(con) {
 				System.out.println("in if statement");
 				con = false;
-				continue; 
+				continue mywhileloop; 
 			}
 			System.out.println("I am out of the if statement");
 			myCar.hasTurbo=false;
 		}
 		
-//		do {
-//			System.out.println("Hit the gas slowpoke!");
-//			myCar.hasTurbo = !myCar.hasTurbo;
-//		} while(myCar.hasTurbo);
-//		
-//		for(int i=0; i<=myCar.seats; i=i+1) {
-//			System.out.println("You have filled "+i+" seats in your car");
-//		}
-//		
-//		switch(myCar.color) {
-//			case "White": System.out.println("My car is the easiest to keep looking clean!"); break;
-//			case "Black": System.out.println("My car is dark as night, like Batman!"); break;
-//			case "Purple": System.out.println("My car is the coolest color there is!"); break;
-//			default: System.out.println("I don't know my car is blah."); break;
-//		}
+		do {
+			System.out.println("Hit the gas slowpoke!");
+			myCar.hasTurbo = !myCar.hasTurbo;
+		} while(myCar.hasTurbo);
+		
+		for(int i=0; i<=myCar.seats; ++i) {
+			System.out.println("You have filled "+i+" seats in your car");
+		}
+		
+		switch(myCar.color) {
+			case "White": System.out.println("My car is the easiest to keep looking clean!"); break;
+			case "Black": System.out.println("My car is dark as night, like Batman!"); break;
+			case "Purple": System.out.println("My car is the coolest color there is!"); break;
+			default: System.out.println("I don't know my car is blah."); break;
+		}
 		
 
 	}
