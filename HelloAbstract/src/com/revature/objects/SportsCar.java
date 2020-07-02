@@ -23,5 +23,9 @@ public class SportsCar extends Car {
 		System.out.println("I am speeding like a villian.");
 		
 	}
+	
+	public void blowHorn() {
+		System.out.println("You're going to slow!");
+	}
 
 }
