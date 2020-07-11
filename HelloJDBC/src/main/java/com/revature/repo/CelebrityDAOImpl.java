@@ -116,7 +116,7 @@ public class CelebrityDAOImpl implements CelebrityDAO {
 			
 		}catch(SQLException e) {
 			System.out.println(e);
-		}
+		} 
 		
 		return null;
 	}
