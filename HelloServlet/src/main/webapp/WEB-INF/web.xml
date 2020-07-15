@@ -14,7 +14,7 @@
   	<description></description>
   	<display-name>HelloServlet</display-name>
   	<servlet-name>HelloServlet</servlet-name>
-  	<servlet-class>com.revature.HelloServlet</servlet-class>
+  	<servlet-class>com.revature.controllers.HelloServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>HelloServlet</servlet-name>
