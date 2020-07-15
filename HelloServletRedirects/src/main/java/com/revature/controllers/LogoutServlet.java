@@ -15,7 +15,7 @@ public class LogoutServlet extends HttpServlet{
 	
 	
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		res.sendRedirect("/logout");
+		res.sendRedirect("");
 	}
 	
 
