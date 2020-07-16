@@ -1,6 +1,7 @@
 package com.revature.repos;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -73,7 +74,27 @@ public class AvengerDAO implements IAvengerDAO {
 
 	@Override
 	public boolean addAvenger(Avenger a) {
-		// TODO Auto-generated method stub
+		try(Connection conn = ConnectionUtil.getConnection()) {
+			
+			int index = 0;
+			
+			String sql = "INSERT INTO avengers(superhero_name, superhero_power, first_name, last_name, power_level)"
+					+ " VALUES(?,?,?,?,?);";
+			
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(++index, a.getSupName());
+			statement.setString(++index, a.getSupPower());
+			statement.setString(++index, a.getfName());
+			statement.setString(++index, a.getlName());
+			statement.setInt(++index, a.getpLevel());
+			
+			statement.execute();
+			return true;
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 

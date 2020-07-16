@@ -18,4 +18,20 @@ public class AvengerService {
 		return dao.findById(id);
 	}
 
+	public boolean addAvenger(Avenger a) {
+		List<Avenger> list = findAll();
+		
+		for(Avenger av: list) {
+//			System.out.println(av);
+//			System.out.println(a);
+			if(av.getfName().equals(a.getfName()) && av.getlName().equals(a.getlName()) && av.getSupName().equals(a.getSupName()) ) {
+				return false;
+			}
+		}
+	
+		boolean b = dao.addAvenger(a);
+		System.out.println("boolean in AS = " +b);
+		return b;
+	}
+
 }

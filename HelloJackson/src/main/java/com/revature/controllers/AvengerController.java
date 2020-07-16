@@ -17,4 +17,9 @@ public class AvengerController {
 		return as.findById(id);
 	}
 
+	public boolean addAvenger(Avenger a) {
+		return as.addAvenger(a);
+		
+	}
+
 }
