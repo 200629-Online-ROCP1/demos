@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.controllers.AvengerController;
+import com.revature.controllers.HomeController;
 import com.revature.models.Avenger;
 
 public class MasterServlet extends HttpServlet {
 
 	private static final ObjectMapper om = new ObjectMapper();
 	private static final AvengerController ac = new AvengerController();
+	private static final HomeController hc = new HomeController();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -78,6 +80,14 @@ public class MasterServlet extends HttpServlet {
 
 					}
 				}
+				break;
+			case "home": 
+				if(req.getMethod().equals("POST")) {
+					hc.handlePost(req, res);
+				} else {
+					hc.handGet(req, res, portions); 
+				}
+				
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
