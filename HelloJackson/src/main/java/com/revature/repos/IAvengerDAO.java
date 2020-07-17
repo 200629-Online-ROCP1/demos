@@ -9,5 +9,6 @@ public interface IAvengerDAO {
 	public List<Avenger> findAll();
 	public Avenger findById(int id);
 	public boolean addAvenger(Avenger a);
+	public boolean updateHome(Avenger a);
 
 }

@@ -1,6 +1,7 @@
 package com.revature.repos;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -69,6 +70,32 @@ public class HomeDAO implements IHomeDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean insertHome(Home h) {
+try(Connection conn = ConnectionUtil.getConnection()) {
+			
+			int index = 0;
+			
+			String sql = "INSERT INTO homes(home_base, hb_address, hb_city, hb_state, hb_zip)"
+					+ " VALUES(?,?,?,?,?);";
+			
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(++index, h.getName());
+			statement.setString(++index, h.getAddress());
+			statement.setString(++index, h.getCity());
+			statement.setString(++index, h.getState());
+			statement.setString(++index, h.getZip());
+			
+			statement.execute();
+			return true;
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

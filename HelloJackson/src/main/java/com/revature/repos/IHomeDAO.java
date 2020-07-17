@@ -10,4 +10,6 @@ public interface IHomeDAO {
 
 	List<Home> findAll();
 
+	public boolean insertHome(Home h);
+
 }

@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.models.Avenger;
+import com.revature.models.Home;
 import com.revature.util.ConnectionUtil;
 
 public class AvengerDAO implements IAvengerDAO {
+	
+	private static final IHomeDAO hdao = new HomeDAO();
 
 	@Override
 	public List<Avenger> findAll() {
@@ -32,6 +35,11 @@ public class AvengerDAO implements IAvengerDAO {
 				a.setfName(result.getString("first_name"));
 				a.setlName(result.getString("last_name"));
 				a.setpLevel(result.getInt("power_level"));
+				
+				if(result.getString("home_base_fk")!=null) {
+					Home h = hdao.findByName(result.getString("home_base_fk"));
+					a.setHome(h);
+				}
 				
 				list.add(a); 
 				
@@ -63,6 +71,11 @@ public class AvengerDAO implements IAvengerDAO {
 				a.setlName(result.getString("last_name"));
 				a.setpLevel(result.getInt("power_level"));
 				
+				if(result.getString("home_base_fk")!=null) {
+					Home h = hdao.findByName(result.getString("home_base_fk"));
+					a.setHome(h);
+				}
+				
 				return a;
 			}
 			
@@ -92,6 +105,26 @@ public class AvengerDAO implements IAvengerDAO {
 			return true;
 
 			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean updateHome(Avenger a) {
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "UPDATE avengers SET home_base_fk = ? WHERE superhero_id = ?;";
+			
+			PreparedStatement statement = conn.prepareStatement(sql);
+			int index = 0;
+			
+			statement.setString(++index, a.getHome().getName());
+			statement.setInt(++index, a.getId());
+			
+			statement.execute();
+			return true;
+					
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

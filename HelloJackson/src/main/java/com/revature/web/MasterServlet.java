@@ -95,7 +95,7 @@ public class MasterServlet extends HttpServlet {
 				ses = req.getSession(false);
 				if (ses != null && ((Boolean) ses.getAttribute("loggedin"))) {
 					if (req.getMethod().equals("POST")) {
-						hc.handlePost(req, res);
+						hc.handlePost(req, res, portions);
 					} else {
 						hc.handGet(req, res, portions);
 					}
