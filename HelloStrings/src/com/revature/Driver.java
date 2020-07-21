@@ -46,6 +46,15 @@ public class Driver {
 		
 		s1 = s1.concat(s3);
 		System.out.println(s1);
+		
+		//Escape Sequences -- Added Week 4
+		
+		System.out.println("=======================");
+		
+		System.out.println(String.format("%s said hello to %s", "Sandy", "Chris"));
+		
+		System.out.format("%02.1f was the average quiz score%nI was really happy with your\nSUCCESS!!!!!!!!" , 91.9);
+		
 
 	}
 
